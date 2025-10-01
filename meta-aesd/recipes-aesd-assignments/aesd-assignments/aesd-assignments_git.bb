@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/cu-ecen-aeld/assignments-3-and-later-vizdr.git;proto
 
 PV = "1.0+git${SRCPV}"
 # set to reference a specific commit hash in your assignment repo
-SRCREV = "24ccba538d5ab736cb441f042f703397f2f09291"
+SRCREV = "38151354be2866003ef5f9f7c9decda0a20b4706"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
 # https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-WORKDIR
@@ -50,6 +50,8 @@ do_install () {
 	
 	install -d ${D}${bindir}
     install -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${S}/aesdsocket-start-stop ${D}${sysconfdir}/init.d
+	 # Install init script
+    install -m 0755 ${S}/aesdsocket-start-stop ${D}${sysconfdir}/init.d/aesdsocket-start-stop
+	 # Install application
     install -m 0755 ${S}/aesdsocket ${D}${bindir}/aesdsocket
 }
